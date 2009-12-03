@@ -13,7 +13,7 @@ Given /^I connect to localhost$/ do
 end
 
 When /^I post "([^\"]*)" json$/ do |json_file|
-  @req.body = File.read("/Users/torbjornvatn/Development/workspace/Githubot-python/features/support/#{json_file}.json")  
+  @req.body = File.read("/Users/torbjornvatn/Development/python/githubot/features/support/#{json_file}.json")  
   @response = Net::HTTP.new(@host, @port).start {|http| http.request(@req) }
 end
 
