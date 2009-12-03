@@ -1,0 +1,62 @@
+<html>
+<head>
+<script type="text/javascript" 
+        src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("jquery", "1.3.2");
+
+  /**
+   * Formats a property found in the outgoing operations.
+   */
+  function formatProperty(prop) {
+    var t = typeof prop;
+    if (t == 'undefined') {
+      return '';
+    }
+    if (t == 'string') {
+      return ': ' + prop;
+    }
+    res = ':';
+    for (sub in prop) {
+      if (sub == 'javaClass') {
+        continue;
+      }
+      res += ' ' + sub + '=' + prop[sub];
+    }
+    return res;
+  }
+
+  /**
+   * Called when button is clicked.
+   * Sends an HTTP POST to the JSON-RPC service
+   * with the message from the text area.
+   */
+  function sendIncoming() {
+    var incoming = $('#incoming').attr('value');
+    jQuery.post("/_wave/robot/jsonrpc", incoming, showOutgoing, "json");
+  }
+
+  /**
+   * Callback function for HTTP POST.
+   * Expects a JSON response from server
+   * that describes the robot's intended operations.
+   * Displays these in a nicely formatted way.
+   */
+  function showOutgoing(data) {
+    var ops = data.operations.list;
+    for (var i = 0; i < ops.length; ++i) {
+      var node = $('<div>' + ops[i].type + formatProperty(ops[i].property) + '</div>');
+      node.appendTo($('#outgoing'));
+    }
+  }
+</script>
+</head>
+
+<body>
+  Enter Incoming JSON:<br/>
+  <textarea id="incoming" cols=50 rows=20></textarea><br/>
+  <button onclick="sendIncoming()" id="runOps">Send Incoming</button>
+  <br/><br/>
+  <div id='outgoing' style="width:100%"><div>Outgoing:</div></div>
+</body>
+</html>

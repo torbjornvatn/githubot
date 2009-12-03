@@ -1,0 +1,15 @@
+application: githubot
+version: 2
+runtime: python
+api_version: 1
+
+handlers:
+- url: /_wave/.*
+  script: githubot.py
+- url: /assets
+  static_dir: assets
+- url: /localdebug.html
+  static_files: ../features/support/localdebug.html
+  upload: localdebug.html
+  mime_type: text/html
+  
