@@ -7,5 +7,4 @@ handlers:
 - url: /_wave/.*
   script: githubot.py
 - url: /assets
-  static_dir: assets
-  
+  static_dir: assets 
