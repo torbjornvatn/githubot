@@ -9,10 +9,12 @@ from waveapi import robot
 from github_access import *
 import re
 
+repo = "testrepo"
+
 def OnRobotAdded(properties, context):
   root_wavelet = context.GetRootWavelet()
   doc = root_wavelet.CreateBlip().GetDocument()
-  doc.SetText("I'm looking at: " + GithubAccess().getRepo("testrepo").name)
+  doc.SetText("I'm looking at: " + GithubAccess().getRepo(repo).name)
   
 def OnBlipSubmitted(properties, context):
   blip = context.GetBlipById(properties['blipId'])
@@ -20,9 +22,13 @@ def OnBlipSubmitted(properties, context):
 
 def parse_contents(blip):
   doc = blip.GetDocument()
-  pattern = re.compile("(#)([\d]+)")
-  for t in re.finditer(pattern, doc.GetText()):
-	doc.SetText(GithubAccess().getIssue("testrepo", t.group(2)).title)
+  pattern = re.compile("#([\d]+)")
+  contents = doc.GetText()
+  for t in re.finditer(pattern, contents):
+	issue_nr = t.group(1)
+	issue_title = GithubAccess().getIssue(repo, issue_nr).title
+	contents = contents.replace("#"+issue_nr, "["+issue_title+" - #"+issue_nr+"]")
+  doc.SetText(contents)
 
 if __name__ == '__main__':
     myRobot = robot.Robot('Githubot',

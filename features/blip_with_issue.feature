@@ -4,9 +4,10 @@ Feature: Blip with a #XX issue submitted
   I want githubot to replace issue # with issue title
   
   Scenario: Add an issue to wavelet
-    Given I connect to localhost
-    When I post "blip_with_issue" json
-    Then I should see "This is a test issue"
+    Given I've chosen "githubot" -> "testrepo"
+    And I type "issue #1"
+    When I trigger a "blip_with_issue" event
+    Then I should see "issue \[This is a test issue - #1\]"
   
   
   
