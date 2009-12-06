@@ -12,8 +12,9 @@ Given /^I type "([^\"]*)"$/ do |issue_nr|
 end
 
 When /^I trigger a "([^\"]*)" event$/ do |json_file|
-  @@request.body = File.read("/Users/torbjornvatn/Development/python/githubot/features/support/#{json_file}.json")  
-  @response = call_robot
+  request = create_http_request
+  request.body = File.read("/Users/torbjornvatn/Development/python/githubot/features/support/#{json_file}.json")  
+  @response = call_robot(request)
 end
 
 Then /^I should see "([^\"]*)"$/ do |text|
