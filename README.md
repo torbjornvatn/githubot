@@ -1,28 +1,31 @@
-  **Githubot**
+Githubot
+--------
 
   --------------------------------------------------------------------
-  *Introduction*
+  **Introduction**
   
   A Google Wave robot that interacts with github repositories within a Wave.
 
   --------------------------------------------------------------------
-  *Features*
+  **Features**
   
   - Connects to githubots testrepo (will be changed to take the repo as input)
   - Tracks the wave and looks for #1 like numbers and replaces them with the title 
     of the corresponding issue in the repo
   
+  
   --------------------------------------------------------------------
-  *Testing*
+  **Testing**
   
   - Start the robot via **GoogleAppEngineLauncher** or the **dev_appserver.py** script
   - Run `cucumber features` in the `github` folder  
     
+    
   --------------------------------------------------------------------
   
-  *Licence*
+  **Licence**
   
-  The MIT License
+  *The MIT License
 
   Copyright (c) 2009 Torbjørn Vatn
 
@@ -43,9 +46,9 @@
   NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
   LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
   OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*
     
   --------------------------------------------------------------------
-  *Google Wave Terms*
+  **Google Wave Terms**
   
-    http://code.google.com/apis/wave/terms.html
+  http://code.google.com/apis/wave/terms.html
