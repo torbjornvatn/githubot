@@ -46,6 +46,6 @@
   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     
   --------------------------------------------------------------------
-  Google Wave Terms
+  *Google Wave Terms*
   
     http://code.google.com/apis/wave/terms.html
